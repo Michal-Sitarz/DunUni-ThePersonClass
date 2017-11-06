@@ -5,8 +5,7 @@
  */
 package thePersonClass;
 
-/**
- *
+/*
  * @author MJSitarz
  */
 public class Main {
