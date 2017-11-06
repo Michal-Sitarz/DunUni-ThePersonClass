@@ -1,12 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package thePersonClass;
 
 /*
- * @author MJSitarz
+ * @author MJSitarz@dundee.ac.uk
  */
 public class Person {
 
@@ -27,10 +22,8 @@ public class Person {
         weight = _weight;
         gender = _gender;
     }
-    
-    
+
     //SETters
-    
     public void setFirstName(String _firstName) {
         firstName = _firstName;
     }
@@ -50,16 +43,13 @@ public class Person {
     public void setWeight(int _weight) {
         weight = _weight;
     }
-    
+
     public void setSpouse(Person _spouse) {
         spouse = _spouse;
     }
-    
-    // no setter for field: gender - cannot be changed
-    
-    
-    //GETters
 
+    // no setter for field: gender - cannot be changed
+    //GETters
     public String getFirstName() {
         return firstName;
     }
@@ -87,10 +77,35 @@ public class Person {
     public Person getSpouse() {
         return spouse;
     }
-    
-    
+
     // other methods
+    public String getFullName() {
+        String fullName = firstName + " " + lastName;
+        return fullName;
+    }
+
+    public boolean getMartialStatus() {
+        return spouse != null;
+        // above statement is short and return the same
+        // plus it's not "redundant", so it performs better xD
+        /*
+        if (spouse != null) {
+            return true;
+        } else {
+            return false;
+        }
+         */
+    }
+
+    public double getBMIindex() {
+        double height = this.height / 100;
+        return (weight / height) / height;
+    }
     
-    
+    public void showBMImeaning(){
+        // use switch - depending on the BMI index
+        
+        // print result saying: obese, overweight, etc.
+    }
 
 }
