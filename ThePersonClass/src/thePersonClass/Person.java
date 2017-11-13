@@ -11,14 +11,14 @@ public class Person {
     private int height;
     private int weight;
     private Person spouse;
-    private char gender;
+    private Gender gender;
 
-    private enum Gender {
+    public enum Gender {
         M, F
     }
 
     //ctor
-    public Person(String _firstName, String _lastName, int _age, int _height, int _weight, char _gender) {
+    public Person(String _firstName, String _lastName, int _age, int _height, int _weight, Gender _gender) {
         this.firstName = _firstName;
         this.lastName = _lastName;
         this.age = _age;
@@ -74,7 +74,7 @@ public class Person {
         return this.weight;
     }
 
-    public char getGender() {
+    public Gender getGender() {
         return this.gender;
     }
 
@@ -103,7 +103,7 @@ public class Person {
 
     public double getBMIindex() {
         double height = this.height / 100;
-        return (this.weight / height) / height;
+        return ((this.weight / height) / height);
     }
 
     public void showBMImeaning() {
@@ -153,5 +153,6 @@ public class Person {
         // !!!
 
     }
+    
     
 }
