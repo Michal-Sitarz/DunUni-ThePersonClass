@@ -135,7 +135,7 @@ public class Person {
                 // check, if both persons aren't under 18 years old
                 if (this.age >= 18 && _spouse.getAge() >= 18) {
                     this.spouse = _spouse;
-                    _spouse.setSpouse(this.spouse);
+                    _spouse.setSpouse(this);
                     System.out.println("Congratulations: a couple just get married! :)");
                 } else {
                     System.out.println("Sorry, one or both persons are under 18 years old.");
@@ -146,6 +146,11 @@ public class Person {
         } else {
             System.out.println("Sorry, both partners are of the same gender.");
         }
+        
+        // !!!
+        // could be implemented as a chain of if-else-if statements
+        // using less lines of code...
+        // !!!
 
     }
     
