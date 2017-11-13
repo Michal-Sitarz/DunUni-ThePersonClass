@@ -11,6 +11,10 @@ public class Person {
     private int height;
     private int weight;
     private char gender;
+
+    private enum Gender {
+        M, F
+    }
     private Person spouse;
 
     //ctor
@@ -101,11 +105,28 @@ public class Person {
         double height = this.height / 100;
         return (weight / height) / height;
     }
-    
-    public void showBMImeaning(){
-        // use switch - depending on the BMI index
+
+    public void showBMImeaning() {
+        //get BMI index value
+        double BMI = getBMIindex();
         
-        // print result saying: obese, overweight, etc.
+        // check the corresponding meaning of BMI index value
+        if(BMI>=30){
+            System.out.println("This person is obese.");
+        }
+        else if(BMI <30 && BMI >=25){
+            System.out.println("This person is overweight.");
+        }
+        else if(BMI <25 && BMI >=18.5){
+            System.out.println("This person has normal weight.");
+        }
+        else if(BMI<18.5){
+            System.out.println("This person is underweight.");
+        }
+        else{
+            System.out.println("BMI out of range.");
+        }
+
     }
 
 }
