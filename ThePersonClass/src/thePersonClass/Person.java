@@ -10,87 +10,87 @@ public class Person {
     private int age;
     private int height;
     private int weight;
+    private Person spouse;
     private char gender;
 
     private enum Gender {
         M, F
     }
-    private Person spouse;
 
     //ctor
     public Person(String _firstName, String _lastName, int _age, int _height, int _weight, char _gender) {
-        firstName = _firstName;
-        lastName = _lastName;
-        age = _age;
-        height = _height;
-        weight = _weight;
-        gender = _gender;
+        this.firstName = _firstName;
+        this.lastName = _lastName;
+        this.age = _age;
+        this.height = _height;
+        this.weight = _weight;
+        this.gender = _gender;
     }
 
     //SETters
     public void setFirstName(String _firstName) {
-        firstName = _firstName;
+        this.firstName = _firstName;
     }
 
     public void setLastName(String _lastName) {
-        lastName = _lastName;
+        this.lastName = _lastName;
     }
 
     public void setAge(int _age) {
-        age = _age;
+        this.age = _age;
     }
 
     public void setHeight(int _height) {
-        height = _height;
+        this.height = _height;
     }
 
     public void setWeight(int _weight) {
-        weight = _weight;
+        this.weight = _weight;
     }
 
     public void setSpouse(Person _spouse) {
-        spouse = _spouse;
+        this.spouse = _spouse;
     }
 
     // no setter for field: gender - cannot be changed
     //GETters
     public String getFirstName() {
-        return firstName;
+        return this.firstName;
     }
 
     public String getLastName() {
-        return lastName;
+        return this.lastName;
     }
 
     public int getAge() {
-        return age;
+        return this.age;
     }
 
     public int getHeight() {
-        return height;
+        return this.height;
     }
 
     public int getWeight() {
-        return weight;
+        return this.weight;
     }
 
     public char getGender() {
-        return gender;
+        return this.gender;
     }
 
     public Person getSpouse() {
-        return spouse;
+        return this.spouse;
     }
 
     // other methods
     public String getFullName() {
-        String fullName = firstName + " " + lastName;
+        String fullName = this.firstName + " " + this.lastName;
         return fullName;
     }
 
-    public boolean getMartialStatus() {
-        return spouse != null;
-        // above statement is short and return the same
+    public boolean hasSpouse() {
+        return this.spouse != null;
+        // above statement is short and returns the same
         // plus it's not "redundant", so it performs better xD
         /*
         if (spouse != null) {
@@ -103,30 +103,50 @@ public class Person {
 
     public double getBMIindex() {
         double height = this.height / 100;
-        return (weight / height) / height;
+        return (this.weight / height) / height;
     }
 
     public void showBMImeaning() {
         //get BMI index value
         double BMI = getBMIindex();
-        
+
         // check the corresponding meaning of BMI index value
-        if(BMI>=30){
+        if (BMI >= 30) {
             System.out.println("This person is obese.");
-        }
-        else if(BMI <30 && BMI >=25){
+        } else if (BMI < 30 && BMI >= 25) {
             System.out.println("This person is overweight.");
-        }
-        else if(BMI <25 && BMI >=18.5){
+        } else if (BMI < 25 && BMI >= 18.5) {
             System.out.println("This person has normal weight.");
-        }
-        else if(BMI<18.5){
+        } else if (BMI < 18.5) {
             System.out.println("This person is underweight.");
-        }
-        else{
+        } else {
             System.out.println("BMI out of range.");
+        }
+    }
+
+    public void marry(Person _spouse) {
+
+        // check, if the person and spouse aren't the same gender
+        if (this.gender != _spouse.getGender()) {
+
+            // check, if both persons are single
+            if (this.spouse == null && !_spouse.hasSpouse()) {
+
+                // check, if both persons aren't under 18 years old
+                if (this.age >= 18 && _spouse.getAge() >= 18) {
+                    this.spouse = _spouse;
+                    _spouse.setSpouse(this.spouse);
+                    System.out.println("Congratulations: a couple just get married! :)");
+                } else {
+                    System.out.println("Sorry, one or both persons are under 18 years old.");
+                }
+            } else {
+                System.out.println("Sorry, one or both persons are not single");
+            }
+        } else {
+            System.out.println("Sorry, both partners are of the same gender.");
         }
 
     }
-
+    
 }
