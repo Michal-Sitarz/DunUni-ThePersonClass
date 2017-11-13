@@ -9,14 +9,14 @@
     b) [•]
     c) [•]
     d) [•]
-    e) [ ]
+    e) [•]
     f) [ ]
     g) [ ]
- * 5.  [ ]
- * 6.  [ ]
+ * 5.  [•]
+ * 6.  [•]
  * 7.  [ ]
  * 8.  [ ]
- * 9.  [ ]
+ * 9.  [•]
  * 10. [ ]
  *
  */
@@ -34,6 +34,8 @@ public class Main {
         test2();
         test3();
         test4();
+        test5();
+
     }
 
     //testing methods
@@ -50,12 +52,12 @@ public class Main {
 
         System.out.println("> Not married");
         System.out.println("Expected: false");
-        System.out.println("Result:   " + p.getMartialStatus());
+        System.out.println("Result:   " + p.hasSpouse());
 
         System.out.println("> Married");
         p.setSpouse(p);
         System.out.println("Expected: true");
-        System.out.println("Result:   " + p.getMartialStatus());
+        System.out.println("Result:   " + p.hasSpouse());
 
     }
 
@@ -76,6 +78,42 @@ public class Main {
         System.out.println("Expected: This person has normal weight.");
         System.out.print("Result:   ");
         p.showBMImeaning();
+    }
+
+    public static void test5() {
+        System.out.println("\n[ Test: 4 ]\n===========");
+        System.out.println("> marry()");
+        
+        Person p1 = new Person("Ted", "Testovny", 99, 200, 75, 'M');
+        Person p2 = new Person("Teodora", "Testy", 99, 200, 75, 'F');
+        p1.marry(p2);
+        System.out.println("Expected: True");
+        System.out.println("Result:   " + p1.hasSpouse());
+        
+        //same gender
+        Person p3 = new Person("Ted", "Testovny", 99, 200, 75, 'M');
+        Person p4 = new Person("Teddy", "Testy", 99, 200, 75, 'M');
+        p3.marry(p4);
+        System.out.println("Expected: False");
+        System.out.println("Result:   " + p3.hasSpouse());
+        
+        //one of them underaged
+        Person p5 = new Person("Ted", "Testovny", 99, 200, 75, 'M');
+        Person p6 = new Person("Teodora", "Testy", 17, 200, 75, 'F');
+        p5.marry(p6);
+        System.out.println("Expected: False");
+        System.out.println("Result:   " + p5.hasSpouse());
+        
+        //both of them married(p1,p2)
+        Person p7 = new Person("Ted", "Testovny", 99, 200, 75, 'M');
+        Person p8 = new Person("Teodora", "Testy", 99, 200, 75, 'F');
+        p7.marry(p2);
+        p8.marry(p1);
+        System.out.println("Expected: False");
+        System.out.println("Result:   " + p7.hasSpouse());
+        System.out.println("Expected: False");
+        System.out.println("Result:   " + p8.hasSpouse());
+
     }
 
 }
