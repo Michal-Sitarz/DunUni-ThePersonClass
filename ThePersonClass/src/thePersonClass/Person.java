@@ -3,7 +3,7 @@ package thePersonClass;
 /*
  * @author MJSitarz@dundee.ac.uk
  */
-public class Person {
+public abstract class Person {
 
     private String firstName;
     private String lastName;
@@ -135,6 +135,11 @@ public class Person {
         // could be implemented as a chain of if-else-if statements
         // using less lines of code...
         // !!!
+    }
+
+    public void divorce() {
+        spouse.spouse = null;
+        this.spouse = null;
     }
 
 }
