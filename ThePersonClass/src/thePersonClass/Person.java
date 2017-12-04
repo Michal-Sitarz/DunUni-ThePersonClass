@@ -11,20 +11,14 @@ public class Person {
     private int height;
     private int weight;
     private Person spouse;
-    private Gender gender;
-
-    public enum Gender {
-        M, F
-    }
 
     //ctor
-    public Person(String _firstName, String _lastName, int _age, int _height, int _weight, Gender _gender) {
+    public Person(String _firstName, String _lastName, int _age, int _height, int _weight) {
         this.firstName = _firstName;
         this.lastName = _lastName;
         this.age = _age;
         this.height = _height;
         this.weight = _weight;
-        this.gender = _gender;
     }
 
     //SETters
@@ -72,10 +66,6 @@ public class Person {
 
     public int getWeight() {
         return this.weight;
-    }
-
-    public Gender getGender() {
-        return this.gender;
     }
 
     public Person getSpouse() {
@@ -126,33 +116,25 @@ public class Person {
 
     public void marry(Person _spouse) {
 
-        // check, if the person and spouse aren't the same gender
-        if (this.gender != _spouse.getGender()) {
+        // check, if both persons are single
+        if (this.spouse == null && !_spouse.hasSpouse()) {
 
-            // check, if both persons are single
-            if (this.spouse == null && !_spouse.hasSpouse()) {
-
-                // check, if both persons aren't under 18 years old
-                if (this.age >= 18 && _spouse.getAge() >= 18) {
-                    this.spouse = _spouse;
-                    _spouse.setSpouse(this);
-                    System.out.println("Congratulations: a couple just get married! :)");
-                } else {
-                    System.out.println("Sorry, one or both persons are under 18 years old.");
-                }
+            // check, if both persons aren't under 18 years old
+            if (this.age >= 18 && _spouse.getAge() >= 18) {
+                this.spouse = _spouse;
+                _spouse.setSpouse(this);
+                System.out.println("Congratulations: a couple just get married! :)");
             } else {
-                System.out.println("Sorry, one or both persons are not single");
+                System.out.println("Sorry, one or both persons are under 18 years old.");
             }
         } else {
-            System.out.println("Sorry, both partners are of the same gender.");
+            System.out.println("Sorry, one or both persons are not single");
         }
-        
+
         // !!!
         // could be implemented as a chain of if-else-if statements
         // using less lines of code...
         // !!!
-
     }
-    
-    
+
 }
