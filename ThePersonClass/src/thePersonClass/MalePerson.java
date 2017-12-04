@@ -11,4 +11,14 @@ public class MalePerson extends Person {
 
     }
 
+    public void marry(Person spouse) {
+        //check gender here
+        if (spouse) {
+            super.marry(spouse);
+        } else {
+            System.out.println("Sorry, both partners are of the same sex.");
+        }
+
+    }
+
 }
